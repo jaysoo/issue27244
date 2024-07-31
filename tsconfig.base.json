@@ -1,0 +1,35 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "noImplicitReturns": false,
+    "noUnusedLocals": false,
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
+    "esModuleInterop": true,
+    "noImplicitThis": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "downlevelIteration": true,
+    "resolveJsonModule": true,
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "module": "esnext",
+    "target": "es2017",
+    "jsx": "react",
+    "lib": ["dom", "es2021"],
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "vite-plugins-using-paths-aliases": ["packages/vite-plugins/src/index.ts"]
+    }
+  },
+  "exclude": ["node_modules", "tmp"]
+}

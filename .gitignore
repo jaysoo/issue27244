@@ -1,0 +1,6 @@
+node_modules
+.nx
+dist
+*/dist
+tmp
+.yarn/install-state.gz

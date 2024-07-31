@@ -1,0 +1,58 @@
+{
+  "$schema": "./node_modules/nx/schemas/nx-schema.json",
+  "namedInputs": {
+    "default": [
+      "{projectRoot}/**/*",
+      "!{projectRoot}/eslint-disabled-rules.json",
+      "sharedGlobals"
+    ],
+    "sharedGlobals": [
+      "{workspaceRoot}/tsconfig.base.json",
+      "{workspaceRoot}/nx.json",
+      {
+        "runtime": "yarn -v"
+      },
+      {
+        "env": "NODE_ENV"
+      }
+    ],
+    "production": [
+      "default",
+      "!{projectRoot}/README.md",
+      "!{projectRoot}/.gitignore",
+      "!{projectRoot}/**/?(*.)+(spec|test).[jt]s?(x)?(.snap)",
+      "!{projectRoot}/tsconfig.spec.json",
+      "!{projectRoot}/jest.config.[jt]s",
+      "!{projectRoot}/.eslintrc.json",
+      "!{projectRoot}/.eslintignore",
+      "!{projectRoot}/.storybook/**/*",
+      "!{projectRoot}/sandbox/**/*",
+      "!{projectRoot}/**/*.stories.@(js|jsx|ts|tsx|mdx)",
+      "!{projectRoot}/src/test-setup.[jt]s",
+      "!{projectRoot}/tsconfig.storybook.json",
+      "!{projectRoot}/__mocks__/**",
+      "!{projectRoot}/**/__tests__/**",
+      "!{projectRoot}/**/__test__/**",
+      "!{projectRoot}/eslint.config.js"
+    ]
+  },
+  "plugins": [
+    {
+      "plugin": "@nx/vite/plugin",
+      "options": {
+        "buildTargetName": "build",
+        "previewTargetName": "preview",
+        "testTargetName": "test",
+        "serveTargetName": "dev",
+        "serveStaticTargetName": "serve-static"
+      }
+    }
+  ],
+  "targetDefaults": {
+    "@nx/js:tsc": {
+      "cache": true,
+      "dependsOn": ["^build"],
+      "inputs": ["production", "^production"]
+    }
+  }
+}
