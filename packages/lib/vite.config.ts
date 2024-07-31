@@ -10,7 +10,11 @@ import { defineConfig } from 'vite';
 
 export default defineConfig(({ mode }) => ({
   root: __dirname,
-  plugins: [nxViteTsPaths(), myDebugPlugin()],
+  plugins: [
+    nxViteTsPaths(),
+    // Used here
+    myDebugPlugin(),
+  ],
 
   build: {
     outDir: './dist',
