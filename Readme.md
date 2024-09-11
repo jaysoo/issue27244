@@ -1,5 +1,24 @@
 # Minimal reproduction for config sharing in the same workspace
 
+## Solutions (from @jaysoo)
+
+The problem is that `libs/vite-plugins/package.json` points to the `dist` folder, which is not generated during graph creation. There is a `global.NX_GRAPH_CREATION` variable that we can check to make sure we're either:
+
+1. Not loading the plugin in `vite.config.ts` during graph creation; OR
+2. Create separate `index.js` entry file that does not need to be built, which checks the global variable and return a stub during graph creation.
+
+
+I've chosen (2) as I think it's cleaner, but I've also left comments in `vite.config.ts` to show (1).
+
+
+```shell
+yarn
+nx build lib
+```
+
+It's not easy to have this work out of the box. We cannot guarantee support for workspace projects used in configuration files due to the exact problem outlined in this repo. That said, it is something we can explore in the future.
+
+
 ## Context
 
 - Package based repo (aka using `workspaces`)

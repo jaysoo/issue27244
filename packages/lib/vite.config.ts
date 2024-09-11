@@ -12,8 +12,11 @@ export default defineConfig(({ mode }) => ({
   root: __dirname,
   plugins: [
     nxViteTsPaths(),
-    // Used here
     myDebugPlugin(),
+
+    // Alternative approach, where we only require the plugin during build time.
+    // You'll also need to remove the import at the top of this file.
+    // !global.NX_GRAPH_CREATION ? require('@repro/vite-plugins').myDebugPlugin() : {}
   ],
 
   build: {
